@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Robert Lyu | Portfolio</title>
+    <style>
+      :root {
+        color-scheme: light;
+        color: #111;
+        background: #f8f4ef;
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 16px;
+        line-height: 1.65;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: #fcfbf8;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(circle at top left, rgba(255, 197, 142, 0.16), transparent 25%),
+          radial-gradient(circle at bottom right, rgba(137, 187, 255, 0.12), transparent 20%);
+        pointer-events: none;
+      }
+
+      .page {
+        position: relative;
+        max-width: 920px;
+        margin: 0 auto;
+        padding: 48px 24px 72px;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 32px;
+        margin-bottom: 56px;
+      }
+
+      .brand-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        max-width: 300px;
+      }
+
+      nav {
+        align-self: flex-start;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        font-size: 0.95rem;
+      }
+
+      .brand {
+        font-size: 0.95rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #555;
+      }
+
+      .profile-img {
+        width: 280px;
+        height: 280px;
+        border-radius: 34px;
+        object-fit: cover;
+        border: 1px solid rgba(17, 17, 17, 0.1);
+        background: #f7f1e8;
+        box-shadow: 0 28px 85px rgba(17, 17, 17, 0.12);
+      }
+
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        font-size: 0.95rem;
+      }
+
+      nav a {
+        color: #333;
+        text-decoration: none;
+        transition: color 180ms ease, transform 180ms ease;
+      }
+
+      nav a:hover,
+      nav a:focus-visible {
+        color: #0d4b8f;
+        transform: translateY(-1px);
+      }
+
+      .hero {
+        padding: 40px 0 32px;
+      }
+
+      .eyebrow {
+        font-size: 0.95rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #7c7c7c;
+        margin-bottom: 18px;
+      }
+
+      .hero h1 {
+        margin: 0 0 24px;
+        font-size: clamp(2.85rem, 4vw, 4.6rem);
+        line-height: 0.98;
+        letter-spacing: -0.05em;
+      }
+
+      .hero p {
+        max-width: 730px;
+        margin: 0 0 28px;
+        font-size: 1.05rem;
+        color: #333;
+      }
+
+      .quick-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      .button,
+      .button-secondary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 20px;
+        border-radius: 999px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+      }
+
+      .button {
+        background: #111;
+        color: #fff;
+      }
+
+      .button-secondary {
+        background: rgba(17, 17, 17, 0.04);
+        color: #111;
+      }
+
+      .button:hover,
+      .button-secondary:hover,
+      .button:focus-visible,
+      .button-secondary:focus-visible {
+        transform: translateY(-2px);
+        box-shadow: 0 18px 50px rgba(17, 17, 17, 0.08);
+      }
+
+      section {
+        margin-top: 64px;
+      }
+
+      .section-header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 30px;
+      }
+
+      .section-header h2 {
+        margin: 0;
+        font-size: clamp(1.55rem, 2.1vw, 2.25rem);
+        letter-spacing: -0.04em;
+      }
+
+      .section-header span {
+        color: #7c7c7c;
+        font-size: 0.95rem;
+      }
+
+      .content-block {
+        display: grid;
+        gap: 22px;
+      }
+
+      .about-text,
+      .leadership-text,
+      .skills-grid {
+        background: #fff;
+        border: 1px solid rgba(17, 17, 17, 0.06);
+        border-radius: 24px;
+        padding: 34px;
+      }
+
+      .about-text p,
+      .leadership-text p {
+        margin: 0;
+        color: #3c3c3c;
+      }
+
+      .project-grid {
+        display: grid;
+        gap: 20px;
+      }
+
+      .project-card {
+        padding: 26px;
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.95);
+        border: 1px solid rgba(17, 17, 17, 0.06);
+        transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+      }
+
+      .project-card:hover,
+      .project-card:focus-within {
+        transform: translateY(-3px);
+        box-shadow: 0 30px 80px rgba(17, 17, 17, 0.08);
+        border-color: rgba(13, 75, 143, 0.18);
+      }
+
+      .project-card h3 {
+        margin: 0 0 10px;
+        font-size: 1.15rem;
+      }
+
+      .project-card p {
+        margin: 0;
+        color: #525252;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .skill-pill {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .skill-pill span {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 48px;
+        border-radius: 999px;
+        background: #f5f2ec;
+        color: #222;
+        font-size: 0.95rem;
+        padding: 0 16px;
+      }
+
+      .footer-note {
+        margin-top: 10px;
+        font-size: 0.95rem;
+        color: #727272;
+      }
+
+      @media (max-width: 780px) {
+        header,
+        .section-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .profile-img {
+          width: 84px;
+          height: 84px;
+        }
+
+        .skills-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <div class="brand-wrapper">
+          <div class="brand">Robert Lyu</div>
+          <img class="profile-img" src="IMG_5797.JPG" alt="Robert Lyu portrait" />
+        </div>
+        <nav>
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#leadership">Leadership</a>
+          <a href="#skills">Skills</a>
+          <a href="https://www.linkedin.com/in/robert-lyu-736337291" target="_blank" rel="noreferrer">LinkedIn</a>
+        </nav>
+      </header>
+
+      <section class="hero" id="home">
+        <div class="eyebrow">Creative Strategist</div>
+        <h1>Creative strategist who turns consumer insight and data into clear, high-impact marketing.</h1>
+        <p>
+          I blend research-led strategy with creative execution to help brands translate audience intelligence into campaigns, content and go-to-market motion that feel human, memorable and commercially grounded.
+        </p>
+        <div class="quick-links">
+          <a class="button" href="#about">Learn more</a>
+          <a class="button-secondary" href="#projects">View work</a>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="section-header">
+          <h2>About</h2>
+          <span>Interdisciplinary strategy</span>
+        </div>
+        <div class="about-text">
+          <p>
+            I build marketing and product direction from a blend of consumer research, business analytics and creative leadership. My work is rooted in people-first technology and innovation, turning complex audience insight into influence for teams and clients. I partner with firms to shape ideas that connect with culture while moving the business forward — from breakthrough content to thoughtful GTM recommendations, all anchored in clarity, collaboration, and measurable impact.
+          </p>
+        </div>
+      </section>
+
+      <section id="projects">
+        <div class="section-header">
+          <h2>Projects</h2>
+          <span>Selected focus areas</span>
+        </div>
+        <div class="project-grid">
+          <div class="project-card">
+            <h3>Analytics & Insights</h3>
+            <p>Traffic and content analysis for JPF, consumer regression modeling for Abbott, and performance planning across GA and SEM channels.</p>
+          </div>
+          <div class="project-card">
+            <h3>Content, Social & Email</h3>
+            <p>Open Letter newsletters and social campaigns for 10+ titles, paired with community growth strategy for Unitimes social.</p>
+          </div>
+          <div class="project-card">
+            <h3>Brand & Go-to-Market</h3>
+            <p>Strategic pricing and GTM recommendations grounded in Abbott education research and market positioning work.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="leadership">
+        <div class="section-header">
+          <h2>Leadership</h2>
+          <span>Creative direction</span>
+        </div>
+        <div class="leadership-text">
+          <p>
+            I have led an international music ensemble through 10+ performances, guiding collaborative creative projects that balance artistic vision with disciplined execution. This leadership experience reinforces thoughtful communication, cross-functional coordination and a grounded approach to delivering standout experiences.
+          </p>
+        </div>
+      </section>
+
+      <section id="skills">
+        <div class="section-header">
+          <h2>Skills</h2>
+          <span>Data, storytelling, marketing</span>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-pill">
+            <span>SQL</span>
+            <span>R</span>
+            <span>Excel</span>
+            <span>Python</span>
+            <span>Tableau</span>
+          </div>
+          <div class="skill-pill">
+            <span>Marketing strategy</span>
+            <span>Consumer insight</span>
+            <span>Growth planning</span>
+            <span>Content strategy</span>
+            <span>Go-to-market</span>
+          </div>
+        </div>
+        <p class="footer-note">Reach out via LinkedIn for a conversation about strategy, research, and creative transformation.</p>
+      </section>
+    </div>
+  </body>
+</html>
